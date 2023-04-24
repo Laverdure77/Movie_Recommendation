@@ -114,7 +114,8 @@ export default {
       textAreaInput: '',
       query: '',
       results: null, 
-      baseUrlApi: 'https://movie-recommandation.onrender.com',
+      // baseUrlApi: 'https://movie-recommandation.onrender.com',
+      baseUrlApi: 'http://127.0.0.1:5100',
       baseUrlImage: 'http://image.tmdb.org/t/p/w500',
       baseUrlMovie: 'https://api.themoviedb.org/3/search/movie?api_key=58dff008e6a9f668953c9a34796bec27&query=',
       favoritesList: [],
@@ -170,10 +171,10 @@ export default {
         }
     },
     getTextAreaRecommandation(){
-      // console.log(JSON.stringify(Object.assign({},this.textAreaInput)))
-      console.log(JSON.stringify(this.textAreaInput))
+      // console.log(JSON.stringify({textareainput: this.textAreaInput}))
+      // console.log(JSON.stringify(this.textAreaInput))
       axios.post( this.baseUrlApi + '/recommandation',
-                  JSON.stringify(this.textAreaInput),
+                  JSON.stringify({textareainput: this.textAreaInput}),
                   {
                     headers: {
                       'Content-Type': 'application/json',

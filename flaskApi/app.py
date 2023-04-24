@@ -6,7 +6,7 @@ from flask import json
 from flask import make_response
 from flask_cors import CORS
 from function import get_recommendations
-import uvicorn
+
 
 app = Flask(__name__)
 CORS(app)
@@ -22,7 +22,10 @@ def recommandation():
         content_type = request.headers.get('Content-Type')
         if (content_type == 'application/json'):
             datas = request.json
-            overviews = ','.join([i for i in datas])
+            print('this is data json request')
+            print(json.dumps(datas, indent = 4))
+            overviews = ','.join(list(map(str, datas.values())))
+            print("this is the json datas received" + overviews)
             # get the recommandation
             reco = get_recommendations(overviews)
             # format the answer
@@ -30,7 +33,6 @@ def recommandation():
             # Build json response
             response = app.response_class(
                 response=json.dumps(films),
-                # response=films,
                 status=200,
                 mimetype='application/json'
             )
