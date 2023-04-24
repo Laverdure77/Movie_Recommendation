@@ -58,7 +58,7 @@
       v-if="searchType == true & WordCount >=5"
       @click="getTextAreaRecommandation()"
       type="submit">
-      Get recommandation!
+      Get recommendation!
     </button>
 
     <!-- Search Results list -->
@@ -81,7 +81,7 @@
 
     <!-- Recommandation -->
     <button @click="getRecommandation" v-if="favoritesList.length == 5">submit</button>
-    <div class="bg-slate-200/60 rounded-md" v-if="recommandationList.length != 0 & searchType == false">
+    <div class="bg-slate-200/60 rounded-md" v-if="recommandationList.length != 0">
       <h2>My Recommandations:</h2>
       <ul class="">
         <li v-for='reco in recommandationList' class="p-5 m-3 rounded-sm bg-slate-300 flex">
@@ -114,7 +114,7 @@ export default {
       textAreaInput: '',
       query: '',
       results: null, 
-      baseUrlApi: 'http://127.0.0.1:5100',
+      baseUrlApi: 'https://movie-recommandation.onrender.com',
       baseUrlImage: 'http://image.tmdb.org/t/p/w500',
       baseUrlMovie: 'https://api.themoviedb.org/3/search/movie?api_key=58dff008e6a9f668953c9a34796bec27&query=',
       favoritesList: [],
@@ -128,7 +128,6 @@ export default {
       console.log(this.baseUrlMovie + query)
       axios.get( this.baseUrlMovie + query)
             .then(response => { this.results = response.data.results})
-      console.log(this.results)
     },
 
     // API query for recommandation
@@ -170,13 +169,25 @@ export default {
           }
         }
     },
-    // getRecommandation(){
-    //   console.log("get recommandation")
-    //   this.recommandationList.push('reco1')
-    // },
     getTextAreaRecommandation(){
-      console.log("get recommandation")
-      this.recommandationList.push('reco1')
+      // console.log(JSON.stringify(Object.assign({},this.textAreaInput)))
+      console.log(JSON.stringify(this.textAreaInput))
+      axios.post( this.baseUrlApi + '/recommandation',
+                  JSON.stringify(this.textAreaInput),
+                  {
+                    headers: {
+                      'Content-Type': 'application/json',
+                    }
+                  }
+            )
+            .then(response => { 
+                              console.log(response.data)
+                              Object.values(response.data).forEach( film => {
+                                axios.get( this.baseUrlMovie + film)
+                                      .then(response => {this.recommandationList.push(response.data.results) })
+                              })
+                            }
+            )
     },
     removeFromFavoritesList(film){
       this.favoritesIdList.splice(this.favoritesIdList.indexOf(film.id),1)
@@ -191,7 +202,7 @@ export default {
     WordCount() {
       return this.textAreaInput.trim().split(/\s+/).length;
     },
-    queryFromFavorites() {
+    queryFromFavorites(){
       this.overviews = []
       if(this.favoritesList.length == 5) {
         this.favoritesList.forEach(film => {
