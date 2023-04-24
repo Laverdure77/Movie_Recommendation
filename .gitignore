@@ -28,3 +28,4 @@ coverage
 *.sw?
 
 venv
+__pycache__

@@ -5,6 +5,7 @@ from flask import request
 from flask import json
 from flask import make_response
 from flask_cors import CORS
+from function import get_recommendations
 import uvicorn
 
 app = Flask(__name__)
@@ -48,6 +49,6 @@ def recommandation():
             
 
 # App run
-# port = 5100
-# if __name__ == '__main__':
-#     app.run(host="0.0.0.0", port=port, debug=True)
+port = 5100
+if __name__ == '__main__':
+    app.run(host="0.0.0.0", port=port, debug=True)
