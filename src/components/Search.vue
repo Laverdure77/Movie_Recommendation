@@ -127,7 +127,7 @@ export default {
     async getResult(query) {
       console.log(this.baseUrlMovie + query)
       axios.get( this.baseUrlMovie + query)
-            .then(response => { this.results = response.data.results })
+            .then(response => { this.results = response.data.results})
       console.log(this.results)
     },
 

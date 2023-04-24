@@ -12,7 +12,7 @@ def get_recommendations(user_input):
     tfidf = TfidfVectorizer(stop_words='english')
 
      # Load database and construct the required TF-IDF matrix by fitting and transforming it
-    metadata = pd.read_csv('../data/movies_metadata.csv', low_memory=False)
+    metadata = pd.read_csv('./data/movies_metadata.csv', low_memory=False)
     metadata['overview'] = metadata['overview'].fillna('')
     tfidf_matrix = tfidf.fit_transform(metadata['overview'])
 

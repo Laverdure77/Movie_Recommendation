@@ -22,22 +22,15 @@ def recommandation():
         content_type = request.headers.get('Content-Type')
         if (content_type == 'application/json'):
             datas = request.json
-            # # Build json response
-            # response = app.response_class(
-            #     response=json.dumps(datas),
-            #     status=200,
-            #     mimetype='application/json'
-            # )
+            overviews = ','.join([i for i in datas])
+            # get the recommandation
+            reco = get_recommendations(overviews)
+            # format the answer
+            films = reco.title.to_dict()
             # Build json response
-            testResponse = {
-                "0": "Batman",
-                "1": "Superman",
-                "2": "Transformers",
-                "3": "Spiderman",
-                "4": "Joker"
-            }
             response = app.response_class(
-                response=json.dumps(testResponse),
+                response=json.dumps(films),
+                # response=films,
                 status=200,
                 mimetype='application/json'
             )
