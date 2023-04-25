@@ -16,12 +16,12 @@
       <div class="bg-slate-200/50 rounded-md">
           <ul class='flex justify-center'>
             <li class='p-2 rounded-sm m-4' 
-                style="cursor: url('/src/assets/cursor/icons8-cross-mark-48.png')24 24,auto"
+                style="cursor: url('/cursor/icons8-cross-mark-48.png')24 24,auto"
                 @click="removeFromFavoritesList(film)"
                 v-for="film in favoritesList" 
                 :key="film">
               <img 
-                style="cursor: url('/src/assets/cursor/icons8-movie-48.png')24 24,auto"
+                style="cursor: url('/cursor/icons8-movie-48.png')24 24,auto"
                 @click="goToTMDB(film)"
                 v-bind:src="baseUrlImage + film.poster_path" 
                 width='100' 
@@ -73,7 +73,7 @@
             v-bind:src="baseUrlImage + result.poster_path" 
             @click="addToFavotitesList(result)" 
             width='100'
-            style="cursor: url('/src/assets/cursor/icons8-green-heart-48.png')24 24,auto">
+            style="cursor: url('/cursor/icons8-green-heart-48.png')24 24,auto">
           <p class="text-white">{{result.title}}</p>
         </li>
       </ul>
@@ -90,7 +90,7 @@
             <img 
               v-bind:src="baseUrlImage + reco[0].poster_path" 
               @click="goToTMDB(reco[0])" 
-              style="cursor: url('/src/assets/cursor/icons8-movie-48.png')24 24,auto"
+              style="cursor: url('/cursor/icons8-movie-48.png')24 24,auto"
               width='150'>
           </div>
           <div class="card-right basis-1/2">
@@ -111,7 +111,7 @@
             <img 
               v-bind:src="baseUrlImage + reco[0].poster_path" 
               @click="goToTMDB(reco[0])" 
-              style="cursor: url('/src/assets/cursor/icons8-movie-48.png')24 24,auto"
+              style="cursor: url('/cursor/icons8-movie-48.png')24 24,auto"
               width='150'>
           </div>
           <div class="card-right basis-1/2">
