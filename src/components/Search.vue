@@ -79,9 +79,9 @@
       </ul>
     </div>
 
-    <!-- Recommandation -->
-    <button @click="getRecommandation" v-if="favoritesList.length == 5">submit</button>
-    <div class="bg-slate-200/60 rounded-md" v-if="recommandationList.length != 0">
+    <!-- Recommandation  Favorites-->
+    <button @click="getRecommandation" v-if="favoritesList.length == 5 & searchType == false">submit</button>
+    <div class="bg-slate-200/60 rounded-md" v-if="recommandationList.length != 0 & searchType == false">
       <h2>My Recommandations:</h2>
       <ul class="">
         <li v-for='reco in recommandationList' class="p-5 m-3 rounded-sm bg-slate-300 flex">
@@ -101,6 +101,26 @@
       </ul>
     </div>
 
+    <!-- Recommandation TextArea-->
+    <div class="bg-slate-200/60 rounded-md" v-if="recommandationListTextArea.length != 0 & searchType == true">
+      <h2>My Recommandations:</h2>
+      <ul class="">
+        <li v-for='reco in recommandationListTextArea' class="p-5 m-3 rounded-sm bg-slate-300 flex">
+          <div class="card-left p-2 basis-1/2">
+            <p class="text-black">{{reco[0].title}}</p> 
+            <img 
+              v-bind:src="baseUrlImage + reco[0].poster_path" 
+              @click="goToTMDB(reco[0])" 
+              style="cursor: url('/src/assets/cursor/icons8-movie-48.png')24 24,auto"
+              width='150'>
+          </div>
+          <div class="card-right basis-1/2">
+            <p class="text-black pt-8">{{reco[0].overview}}</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
   </div>
 </template>
 
@@ -114,20 +134,22 @@ export default {
       textAreaInput: '',
       query: '',
       results: null, 
-      // baseUrlApi: 'https://movie-recommandation.onrender.com',
-      baseUrlApi: 'http://127.0.0.1:5100',
+      baseUrlApi: 'https://movie-recommandation.onrender.com',
+      // baseUrlApi: 'http://127.0.0.1:5100',
       baseUrlImage: 'http://image.tmdb.org/t/p/w500',
       baseUrlMovie: 'https://api.themoviedb.org/3/search/movie?api_key=58dff008e6a9f668953c9a34796bec27&query=',
       favoritesList: [],
       favoritesIdList: [],
-      recommandationList: []
+      recommandationList: [],
+      recommandationListTextArea: []
+
     }
   },
   methods: {
     // TMDB query for movies details
     async getResult(query) {
       console.log(this.baseUrlMovie + query)
-      axios.get( this.baseUrlMovie + query)
+      axios.get(this.baseUrlMovie + query)
             .then(response => { this.results = response.data.results})
     },
 
@@ -139,7 +161,7 @@ export default {
                   JSON.stringify(this.queryFromFavorites),
                   {
                     headers: {
-                      'Content-Type': 'application/json',
+                      'Content-Type': 'application/json',  
                     }
                   }
             )
@@ -171,8 +193,6 @@ export default {
         }
     },
     getTextAreaRecommandation(){
-      // console.log(JSON.stringify({textareainput: this.textAreaInput}))
-      // console.log(JSON.stringify(this.textAreaInput))
       axios.post( this.baseUrlApi + '/recommandation',
                   JSON.stringify({textareainput: this.textAreaInput}),
                   {
@@ -185,7 +205,7 @@ export default {
                               console.log(response.data)
                               Object.values(response.data).forEach( film => {
                                 axios.get( this.baseUrlMovie + film)
-                                      .then(response => {this.recommandationList.push(response.data.results) })
+                                      .then(response => {this.recommandationListTextArea.push(response.data.results) })
                               })
                             }
             )
@@ -204,11 +224,13 @@ export default {
       return this.textAreaInput.trim().split(/\s+/).length;
     },
     queryFromFavorites(){
-      this.overviews = []
       if(this.favoritesList.length == 5) {
-        this.favoritesList.forEach(film => {
-          this.overviews.push(film.overview)
-        })
+        this.overviews = {}
+        for (let i = 0; i < this.favoritesList.length; i++) {
+          this.overviews[i] = this.favoritesList[i].overview
+        }
+        console.log(this.overviews) 
+        
         return this.overviews
       }
     },
