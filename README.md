@@ -1,5 +1,15 @@
 # Movie_recommendation
 
+<p align="center">
+    <img src="https://img.icons8.com/fluency/48/null/python.png" width="30" height="30"/>
+    <img src="https://img.icons8.com/ios-filled/50/null/flask.png" width="30" height="30"/>
+    <img src="https://img.icons8.com/fluency/48/null/javascript.png" width="30" height="30"/>
+    <img src="https://img.icons8.com/color/48/null/vue-js.png" width="30" height="30"/>
+    <img src="https://vitejs.dev/logo-with-shadow.png" width="30" height="30"/>
+    <img src="https://img.icons8.com/color/48/null/tailwindcss.png" width="30" height="30"/>
+    <img src="https://img.icons8.com/color/48/null/docker.png" width="30" height="30"/>
+</p>
+
 ## Description  
 
 Movie recommendation application based on NLP.
@@ -17,14 +27,6 @@ The NLP model was developped by Maïté Rolin.
          
 </p>
 
-<p align="center">
-    <img src="https://img.icons8.com/fluency/48/null/python.png" width="30" height="30"/>
-    <img src="https://img.icons8.com/ios-filled/50/null/flask.png" width="30" height="30"/>
-    <img src="https://img.icons8.com/fluency/48/null/javascript.png" width="30" height="30"/>
-    <img src="https://img.icons8.com/color/48/null/vue-js.png" width="30" height="30"/>
-    <img src="https://vitejs.dev/logo-with-shadow.png" width="30" height="30"/>
-    <img src="https://img.icons8.com/color/48/null/docker.png" width="30" height="30"/>
-</p>
 
 <p align="center">
   <a href="#Application">Application</a> •
@@ -60,11 +62,10 @@ Enter some film description or only 5 keywords to get a film recommendation.
 <br>
 
   > **Note**
-  > Check the status of the API on Render.com by visiting the API's homepage or status page.  
-If the API is currently offline or unavailable, wait for it to wake up.
-This may take a few minutes or more, depending on the reason for the outage.
-Once the API is awake and running, you can start making requests to it as usual.
-The API response could take up to 2 minutes due to restricted cpu usage on the server.
+  > If the Application is currently offline or unavailable, wait for it to wake up.
+This may take a few seconds or more, depending on the reason for the outage.
+Once the Application is awake and running, you can start making requests to it as usual.
+The API response could take up to 1 minutes due to restricted cpu usage on the Render server.
 
 ## NLP Model
 
@@ -73,7 +74,7 @@ The movie recommender system is implemented in Python, and utilizes natural lang
 
 ### Time line
 
-7 working days to discover NLP, Bert, build the app and deployment.
+7 working days to discover NLP, Bert, build the API and App and deployment.
 ### Possible Improvements
 
 - Improve 
@@ -81,11 +82,20 @@ The movie recommender system is implemented in Python, and utilizes natural lang
 
 ### Dependencies  
 
+API  
+
 - Python 3.11  
-- Flask 
+- Flask  
 - NumPy  
 - Pandas  
+- Scikit_learn
 
+Application  
+
+- Node
+- Vue
+- Vite
+- Tailwind
 
 ---
 
