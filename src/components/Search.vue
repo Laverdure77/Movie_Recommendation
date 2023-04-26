@@ -50,7 +50,7 @@
 
     <!-- Search Input -->
     <div class="search-form px-10 py-2 " >
-      <form class="px-10 py-2  bg-slate-200/60 rounded-md">
+      <div class="px-10 py-2  bg-slate-200/60 rounded-md">
         <div class="max-w-xl">
           <div v-show="query.length<5" class="flex space-x-1 items-center mb-2">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -77,35 +77,34 @@
                 placeholder= "Enter movie title" 
                 v-model="query" 
                 @keyup="getResult(query)" />
+              <button @click="clearField()" class="bg-white mx-2 p-4 text-lg font-semibold  rounded-md">
+                Clear
+              </button>
               <button 
                 v-if="searchType == true & WordCount >=5"
-                @click="getTextAreaRecommandation()"
-                type="submit"
-                class=" bg-blue-500 text-white px-6 text-lg font-semibold py-4 mx-1 rounded-r-md">
+                @click="getTextAreaRecommandation"
+                class=" bg-blue-500 text-white p-4 text-lg font-semibold mx-1 rounded-md w-auto">
                 Get recommendations!
               </button>
               <button 
                 v-if="favoritesList.length == 5 & searchType == false"
-                @click="getRecommandation()" 
-                type="submit"
-                class=" bg-blue-500 text-white px-6 text-lg font-semibold py-4 mx-1 rounded-r-md">
+                @click="getRecommandation" 
+                class=" bg-blue-500 text-white px-6 text-lg font-semibold py-4 mx-1 rounded-md">
                 Get recommendations!
               </button>
             </div>
-            <!-- <button class="bg-white px-6 text-lg font-semibold py-4 rounded-md">Clear</button> -->
           </div>
         </div>
-      </form>
+      </div>
     </div>
 
     <!-- submit button -->
-    <button 
+    <!-- <button 
       class="m-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
       v-if="searchType == true & WordCount >=5"
-      @click="getTextAreaRecommandation()"
-      type="submit">
+      @click="getTextAreaRecommandation">
       Get recommendation!
-    </button>
+    </button> -->
 
     <!-- Search Results list -->
     <div class="px-10 py-2">
@@ -127,12 +126,12 @@
     </div>
 
     <!-- Recommandation  Favorites-->
-    <button 
+    <!-- <button 
       class="m-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
       @click="getRecommandation" 
       v-if="favoritesList.length == 5 & searchType == false"
       >Get recommendations!
-    </button>
+    </button> -->
     <div class="px-10 py-2" >
       <div class="bg-slate-200/60 rounded-md px-10 py-2" v-if="recommandationList.length != 0 & searchType == false">
         <h2 class="text-3xl font-bold px-10 py-2" v-if="recommandationList.length != 0 & searchType == false">My Recommendations:</h2>
@@ -280,6 +279,14 @@ export default {
     },
     scrollToTop() {
       window.scroll(0,0)
+    },
+    clearField() {
+      if (this.searchType == true){
+        this.textAreaInput = ''
+      }
+      if (this.searchType == false){
+        this.query = ''
+      }
     }
   },
   computed:{
