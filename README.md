@@ -1,46 +1,51 @@
-# Movie_recomandation
+# Movie_recommendation
 
 ## Description  
 
 Movie recommendation application based on NLP.
 
+
+The NLP model was developped by Maïté Rolin.   
+<a href="https://www.linkedin.com/in/mrolin/" target="_blank"><img src="https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg" width="15" height="15" alt="LinkedIn">Maïté Rolin</a> &nbsp; | &nbsp; <a href="https://github.com/Maite5238//movie-recommender" target="_blank"><img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="15" height="15" alt="GitHub">Maite5238</a> 
+
+
 <a href="https://mymovies-ddyq.onrender.com/">Link to render application</a>
 <br/>
 <p align="center">
     <img src="/readme/screenshot.png"
-         alt="Efficient Frontier graph">
+         alt="Application screenshot">
 </p>
 
 <p align="center">
-  <a href="#Efficient-frontier">Efficient frontier</a> •
-  <a href="#How-Does-It-Work">How Does It Work</a> •
+  <a href="#Application">Application</a> •
   <a href="#how-to-use">How To Use</a> •
-  <a href="#API-Endpoints">API Endpoints</a> •
-  <a href="#Parameters">Parameters</a> •
-  <a href="#Graphs">Graphs</a> •
-  <a href="#Dependencies ">Dependencies </a>
+  <a href="#NLP Model">NLP Model</a> •
+  <a href="#Dependencies">Dependencies</a>
 </p>
 
-## Efficient frontier
+## Application
 
-Efficient frontier optimization (Monte Carlo simulation) is a method used in finance to find the optimal portfolio of assets that provides the highest expected return for a given level of risk or the lowest risk for a given level of expected return.  
-It involves calculating the expected returns and covariance matrix of a set of assets, and then finding the set of portfolios that lie on the efficient frontier, which represents the best possible trade-off between expected return and risk.  
-This optimization method can be used to construct portfolios that are well-diversified and optimized for a specific level of risk tolerance or investment objective.
- 
-## How Does It Work  
+The client application was developped in Javascript based on Vue.Js framework and vite development environment.  
+A Flask Api for the model was also deployed with Docker on render.
 
-Based on 4 years of historical datas, the python script calculate the annual means (returns) and covariance of returns (volality) of the stocks.   
-Then it generates 60000 portfolios by randomly assigning weights to each stock.  
-For each portfolio, it calculates the returns, volatility, and Sharpe ratio.  
-Sharpe ratio is the ratio between the return to volatility.  
-Finally, it returns the best porfolio for:
-- minimum risk
-- best SHAPE ratio
-- best return for actual risk
-- minimum risk for actual return
 
 ## How To Use
-The API is deployed on render.com, on <a href="https://portfolio-optimizer.onrender.com/">https://portfolio-optimizer.onrender.com/</a> 
+The application is deployed on render.com,  
+at <a href="https://mymovies-ddyq.onrender.com/">https://mymovies-ddyq.onrender.com/</a>  
+
+Two ways to get a movie recommendation:  
+You can switch the interface between  
+
+### favorite movie list
+
+Enter film title in the search form and add your favotite films the list.  
+You can only get a recommendation when the list contains 5 films.
+The overview of each film in the list are sent to the model API to compute a list of 5 movies recommendation.  
+
+### film description or keywords
+
+Enter some film description or only 5 keywords to get a film recommendation.  
+
   > **Note**
   > Check the status of the API on Render.com by visiting the API's homepage or status page.  
 If the API is currently offline or unavailable, wait for it to wake up.
@@ -48,166 +53,28 @@ This may take a few minutes or more, depending on the reason for the outage.
 Once the API is awake and running, you can start making requests to it as usual.
 The API response could take up to 2 minutes due to restricted cpu usage on the server.
 
-## API Endpoints  
-### Root  
-Endpoint to check if the API is running.  
-Request:
+## NLP Model
 
-```sql
-GET /
-```
-
-Response:
-
-```json
-{
-  "message": "Welcome to Portfolio Optimizer!"
-}
-```
-### Docs
-Endpoint to access the interactive documentation.  
-<a href="https://portfolio-optimizer.onrender.com/docs">https://portfolio-optimizer.onrender.com/docs</a>  
-Request:
-
-```sql
-GET /docs
-```
-
-<p align="center">
-<img src=".\datas\fast_api.png" alt="efficient frontier" align="center" heigth=200px width=auto> 
-</p>
-
-### Tickers 
-
-Endpoint to optimize a portfolio of tickers.
-
-Request:
-
-```sql
-POST /tickers/
-```
-
-### Parameters
-
-The POST request body is a JSON format with two keys:  
-
-tickers: a list of strings containing the tickers of the assets in the portfolio.  
-weights: a list of integers containing the weights of the assets in the portfolio.  
-
-You can test it on the post tab of the api documentation, or using an api client like thunderclient or postman.
-
-<p align="center" width=200px>
-<img src=".\datas\query_render.png" alt="Query_render" align="center"> 
-
-</p>
-<p align="center">
-<img src=".\datas\thunderclient.png" alt="Query_thunderclient" align="center"> 
-</p>
-
-Response:
-
-If successful, the endpoint returns a JSON object containing the optimized portfolio and URLs to two graphs.
-
-
-
-
-If there is an error, the endpoint returns a JSON object with an error message:
-
-- Please remove similar tickers!  
-- Please check the sum of weights is equal to 100!  
-- Tickers [ticker1, ticker2] do not exist!  
-- Not enough historical data for those tickers: [ticker1], please remove them from the tickers list.  
-
-### Graphs
-
-Endpoint to access static graph files.
-
-Request:
-
-```sql
-GET /graphs/efficient_frontier.png
-GET /graphs/optimisation_plot.png
-```
-
-Response:
-
-A static image file.
-<table border="0">
- <tr>
-    <td><p style="font-size:1em" align="center">Efficient frontier</b></td>
-    <td><img src=".\datas\efficient_frontier.png" alt="efficient frontier" align="center"></td>
- </tr>
- <tr>
-    <td><p style="font-size:1em" align="center">Portfolio optimisation</b></td>
-    <td><img src=".\datas\optimisation_plot.png" alt="graph from clustering model" align="center"></td>
- </tr>
-</table>
-
-The efficient frontier graph shows:  
-
-- the position of the actual portfolio in orange,  
-- the best return portfolio in red,  
-- the minimum risk portfolio in green,  
-- the portfolio optimizing the return for the actual risk, in blue (verticla arrow),  
-- the porfolio reducing the risk for the actual return, in blue (horizontal arrow).  
-
-The portfolio optimisation graph shows the weights for each portfolio.  
+The movie recommender system is implemented in Python, and utilizes natural language processing (NLP) techniques to recommend movies based on their plot summaries. It uses Scikit-learn's TfidfVectorizer, a text vectorization tool, to transform the plot summaries into a matrix of term frequency-inverse document frequency (TF-IDF) features. This technique assigns a weight to each word based on its frequency in the document and the inverse frequency of the word across all documents in the dataset. The resulting matrix represents each movie as a set of weighted features that capture its most important words. The system then computes the cosine similarity between the user input and the plot summaries of all the movies in the dataset, and returns the top 3 movies that are most similar to the user input based on this similarity measure.  
+<a href="https://www.linkedin.com/in/mrolin/" target="_blank"><img src="https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg" width="15" height="15" alt="LinkedIn">Maïté Rolin</a> &nbsp; | &nbsp; <a href="https://github.com/Maite5238//movie-recommender" target="_blank"><img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="15" height="15" alt="GitHub">Maite5238</a> 
 
 ### Time line
 
-9 working days to discover Time Series, portfolio optimisation, build the app and deployment.
+7 working days to discover NLP, Bert, build the app and deployment.
 ### Possible Improvements
 
-- Improve the script to optimize the best return for actual risk and minimum risk for actual return portfolio:  
-  in some cases, those optimized portfolio ( blue points on graphs) are not relevant.  
-  They are choosen amongst the random portfolio created, and the script doesn't find any better porfolio, especially when actual portoflio lies already near the efficient frontier.
-- Build a user fiendly interface.
+- Improve 
+- Improve
 
 ### Dependencies  
 
 - Python 3.11  
-- FastAPI  
+- Flask 
 - NumPy  
 - Pandas  
-- Matplotlib
-- Seaborn
+
 
 ---
 
 > GitHub  [Meulemans Philippe](https://github.com/Laverdure77) &nbsp;&middot;&nbsp;
 > LinkedIn  [Meulemans Philippe](https://www.linkedin.com/in/meulemans-philippe/) &nbsp;&middot;&nbsp;
-
-
-This template should help get you started developing with Vue 3 in Vite.
-
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
