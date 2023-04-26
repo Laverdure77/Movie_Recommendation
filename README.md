@@ -34,11 +34,13 @@ The application is deployed on render.com,
 at <a href="https://mymovies-ddyq.onrender.com/">https://mymovies-ddyq.onrender.com/</a>  
 
 Two ways to get a movie recommendation:  
-You can switch the interface between  
+You can switch<img src="/public/cursor/icons8-clap-48.png" alt="movie icon"> the interface between  
 
 ### favorite movie list
 
-Enter film title in the search form and add your favotite films the list.  
+Enter film title in the search form and add <img src="/public/cursor/icons8-blue-heart-48.png" alt="movie icon">your favorite films the list. 
+You can remove item from the list by hovering on it and click when <img src="/public/cursor/icons8-cross-mark-48.png" alt="red cross icon"> appears.
+To get more informations about any film in the list, hover and click on it when the <img src="/public/cursor/icons8-movie-48.png" alt="movie icon">icon appears. 
 You can only get a recommendation when the list contains 5 films.
 The overview of each film in the list are sent to the model API to compute a list of 5 movies recommendation.  
 
