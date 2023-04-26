@@ -57,9 +57,9 @@ Enter some film description or at least 5 keywords to get a film recommendation.
 <br>
 
   > **Note**
-  > Please allow a few seconds for the Application to wake up as it is deployed on Render.com with a restricted cpu usage.
-The Flask API response could also take up to 1 minutes to get the recommendation due to the same restriction from Render server.
-Once the Application is awake and running, you can start making requests to it as usual.
+  > Please allow a few seconds for the Application to wake up as it is deployed on Render.com with a restricted cpu usage.  
+The Flask API response could also take up to 1 minutes to get the recommendation due to the same restriction from Render server.  
+Once the Application is awake and running, you can start making requests to it as usual.  
 
 ## NLP Model
 
