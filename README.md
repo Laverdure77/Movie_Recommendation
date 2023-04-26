@@ -14,6 +14,16 @@ The NLP model was developped by Maïté Rolin.
 <p align="center">
     <img src="/readme/screenshot.png"
          alt="Application screenshot">
+         
+</p>
+
+<p align="center">
+    <img src="https://img.icons8.com/fluency/48/null/python.png" width="30" height="30"/>
+    <img src="https://img.icons8.com/ios-filled/50/null/flask.png" width="30" height="30"/>
+    <img src="https://img.icons8.com/fluency/48/null/javascript.png" width="30" height="30"/>
+    <img src="https://img.icons8.com/color/48/null/vue-js.png" width="30" height="30"/>
+    <img src="https://vitejs.dev/logo-with-shadow.png" width="30" height="30"/>
+    <img src="https://img.icons8.com/color/48/null/docker.png" width="30" height="30"/>
 </p>
 
 <p align="center">
@@ -28,25 +38,26 @@ The NLP model was developped by Maïté Rolin.
 The client application was developped in Javascript based on Vue.Js framework and vite development environment.  
 A Flask Api for the model was also deployed with Docker on render.
 
-
 ## How To Use
+
 The application is deployed on render.com,  
 at <a href="https://mymovies-ddyq.onrender.com/">https://mymovies-ddyq.onrender.com/</a>  
-
-Two ways to get a movie recommendation:  
-You can switch<img src="/public/cursor/icons8-clap-48.png" alt="movie icon" width="15" height="15"> the interface between  
+ 
+You can switch<img src="/public/cursor/icons8-clap-48.png" alt="movie icon" width="20" height="20"> the interface between:  
 
 ### favorite movie list
 
-Enter film title in the search form and add <img src="/public/cursor/icons8-blue-heart-48.png" width="15" height="15" alt="movie icon">your favorite films to the list.  
-You can remove item from the list by hovering on it and click when <img src="/public/cursor/icons8-cross-mark-48.png" width="15" height="15" alt="red cross icon"> appears.
-To get more informations about any film in the list, hover and click on it when the <img src="/public/cursor/icons8-movie-48.png" width="15" height="15" alt="movie icon">icon appears. 
-You can only get a recommendation when the list contains 5 films.
+Enter film title in the search form and add <img src="/public/cursor/icons8-blue-heart-48.png" width="20" height="20" alt="movie icon"> your favorite films to the list.  
+You can remove item from the list by hovering on it and click when <img src="/public/cursor/icons8-cross-mark-48.png" width="20" height="20" alt="red cross icon"> appears.  
+To get more informations about any film in the list, hover and click on it when the <img src="/public/cursor/icons8-movie-48.png" width="20" height="20" alt="movie icon"> icon appears.  
+You can only get a recommendation when the list contains 5 films.  
 The overview of each film in the list are sent to the model API to compute a list of 5 movies recommendation.  
 
 ### film description or keywords
 
 Enter some film description or only 5 keywords to get a film recommendation.  
+
+<br>
 
   > **Note**
   > Check the status of the API on Render.com by visiting the API's homepage or status page.  
