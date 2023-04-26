@@ -40,7 +40,7 @@ A Flask Api for the model was also deployed with Docker on render.
 The application is deployed on render.com,  
 at <a href="https://mymovies-ddyq.onrender.com/">https://mymovies-ddyq.onrender.com/</a>  
 
-You can switch <img src="/public/cursor/icons8-clap-48.png" alt="movie icon" width="20" height="20" style="vertical-align:baseline;margin:0px 5px"> the interface between:  
+You can switch <img src="/public/cursor/icons8-clap-48.png" alt="movie icon" width="20" height="20" style="vertical-align:baseline;margin:0px 5px;"> the interface between:  
 
 ### favorite movie list
 
