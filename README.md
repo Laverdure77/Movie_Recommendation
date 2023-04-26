@@ -14,25 +14,20 @@
 
 Movie recommendation application based on NLP.
 
-
-The NLP model was developped by Maïté Rolin.   
-<a href="https://www.linkedin.com/in/mrolin/" target="_blank"><img src="https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg" width="15" height="15" alt="LinkedIn">Maïté Rolin</a> &nbsp; | &nbsp; <a href="https://github.com/Maite5238//movie-recommender" target="_blank"><img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="15" height="15" alt="GitHub">Maite5238</a> 
-
+The NLP model was developped by Maïté Rolin.  
+<a href="https://www.linkedin.com/in/mrolin/" target="_blank"><img src="https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg" width="15" height="15" alt="LinkedIn">Maïté Rolin</a> &nbsp; | &nbsp; <a href="https://github.com/Maite5238//movie-recommender" target="_blank"><img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="15" height="15" alt="GitHub">Maite5238</a>  
 
 <a href="https://mymovies-ddyq.onrender.com/">Link to render application</a>
 <br/>
 <p align="center">
-    <img src="/readme/screenshot.png"
-         alt="Application screenshot">
-         
+    <img src="/readme/screenshot.png" alt="Application screenshot"> 
 </p>
 
-
 <p align="center">
-  <a href="#Application">Application</a> •
+  <a href="#application">Application</a> •
   <a href="#how-to-use">How To Use</a> •
-  <a href="#NLP Model">NLP Model</a> •
-  <a href="#Dependencies">Dependencies</a>
+  <a href="#nlp-model">NLP Model</a> •
+  <a href="#dependencies">Dependencies</a>
 </p>
 
 ## Application
@@ -44,7 +39,7 @@ A Flask Api for the model was also deployed with Docker on render.
 
 The application is deployed on render.com,  
 at <a href="https://mymovies-ddyq.onrender.com/">https://mymovies-ddyq.onrender.com/</a>  
- 
+
 You can switch<img src="/public/cursor/icons8-clap-48.png" alt="movie icon" width="20" height="20"> the interface between:  
 
 ### favorite movie list
@@ -57,15 +52,14 @@ The overview of each film in the list are sent to the model API to compute a lis
 
 ### film description or keywords
 
-Enter some film description or only 5 keywords to get a film recommendation.  
+Enter some film description or at least 5 keywords to get a film recommendation.  
 
 <br>
 
   > **Note**
-  > If the Application is currently offline or unavailable, wait for it to wake up.
-This may take a few seconds or more, depending on the reason for the outage.
+  > Please allow a few seconds for the Application to wake up as it is deployed on Render.com with a restricted cpu usage.
+The Flask API response could also take up to 1 minutes to get the recommendation due to the same restriction from Render server.
 Once the Application is awake and running, you can start making requests to it as usual.
-The API response could take up to 1 minutes due to restricted cpu usage on the Render server.
 
 ## NLP Model
 
