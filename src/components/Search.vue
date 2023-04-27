@@ -31,7 +31,7 @@
                 >
               <img 
                 v-else
-                src="public/image/No-Image-Placeholder.png" 
+                src="/image/No-Image-Placeholder.png" 
                 style="cursor: url('/cursor/icons8-movie-48.png')24 24,auto"
                 @click="goToTMDB(film)"
                 width='100' 
@@ -121,7 +121,7 @@
               <!-- if poster is missing -->
             <img 
               v-else
-              src="public/image/No-Image-Placeholder.png" 
+              src="/image/No-Image-Placeholder.png" 
               @click="addToFavotitesList(result)" 
               width='100'
               style="cursor: url('/cursor/icons8-blue-heart-48.png')24 24,auto">
