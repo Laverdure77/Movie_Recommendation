@@ -8,6 +8,7 @@
     <img src="https://vitejs.dev/logo-with-shadow.png" width="30" height="30"/>
     <img src="https://img.icons8.com/color/48/null/tailwindcss.png" width="30" height="30"/>
     <img src="https://img.icons8.com/color/48/null/docker.png" width="30" height="30"/>
+    <img width="30" height="30" src="https://img.icons8.com/color/48/amazon-web-services.png" alt="amazon-web-services"/>
 </p>
 
 ## Description  
@@ -17,7 +18,7 @@ Movie recommendation application based on NLP.
 The NLP model was developped by Maïté Rolin.  
 <a href="https://www.linkedin.com/in/mrolin/" target="_blank"><img src="https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg" width="15" height="15" alt="LinkedIn">Maïté Rolin</a> &nbsp; | &nbsp; <a href="https://github.com/Maite5238//movie-recommender" target="_blank"><img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="15" height="15" alt="GitHub">Maite5238</a>  
 
-<a href="https://mymovies-ddyq.onrender.com/">Link to render application</a>
+<a href="http://movie-recommendation-project-mph-s3-bucket.s3-website.eu-north-1.amazonaws.com"><img width="15" height="15" src="https://img.icons8.com/color/48/amazon-web-services.png" alt="amazon-web-services"/> AWS Link to application</a>
 <br/>
 <p align="center">
     <img src="/readme/screenshot.png" alt="Application screenshot"> 
@@ -25,10 +26,15 @@ The NLP model was developped by Maïté Rolin.
 
 <p align="center">
   <a href="#application">Application</a> •
+  <a href="#time-line">Time Line</a> •
+  <a href="#schema">Schema</a> •
   <a href="#how-to-use">How To Use</a> •
   <a href="#nlp-model">NLP Model</a> •
   <a href="#dependencies">Dependencies</a>
 </p>
+
+## Time Line
+## Schema
 
 ## Application
 
@@ -37,8 +43,8 @@ A Flask Api for the model was also deployed with Docker on render.
 
 ## How To Use
 
-The application is deployed on render.com,  
-at <a href="https://mymovies-ddyq.onrender.com/">https://mymovies-ddyq.onrender.com/</a>  
+The application is deployed on AWS S3,  
+at <a href="http://movie-recommendation-project-mph-s3-bucket.s3-website.eu-north-1.amazonaws.com">http://movie-recommendation-project-mph-s3-bucket.s3-website.eu-north-1.amazonaws.com</a>  
 
 You can switch <img src="/public/cursor/icons8-clap-48.png" alt="movie icon" width="20" height="20" style="vertical-align:baseline;margin:0px 5px;"> the interface between:  
 

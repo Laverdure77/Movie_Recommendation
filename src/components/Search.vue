@@ -85,7 +85,8 @@
               </button>
               <!-- Get Reco from textarea -->
               <button 
-                v-if="searchType == true & WordCount >=5"
+                v-if="searchType == true"
+                v-bind:disabled="WordCount < 5"
                 @click="getTextAreaRecommandation"
                 class=" bg-blue-500 text-white p-4 text-lg font-semibold mx-1 rounded-md w-auto">
                 Get recommendations!
