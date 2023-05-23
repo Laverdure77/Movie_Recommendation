@@ -62,10 +62,8 @@ Enter some film description or at least 5 keywords to get a film recommendation.
 <br>
 
   > **Note**
-  > Please allow a few seconds for the Application to wake up as it is deployed on Render.com with a restricted cpu usage.  
-The Flask API response could also take up to 1 minutes to get the recommendation due to the same restriction from Render server.  
-Once the Application is awake and running, you can start making requests to it as usual.  
-
+  > The Flask API response could take up to 1 minutes to get the recommendation due to restricted cpu usage on Render.com.
+  
 ## NLP Model
 
 The movie recommender system is implemented in Python, and utilizes natural language processing (NLP) techniques to recommend movies based on their plot summaries. It uses Scikit-learn's TfidfVectorizer, a text vectorization tool, to transform the plot summaries into a matrix of term frequency-inverse document frequency (TF-IDF) features. This technique assigns a weight to each word based on its frequency in the document and the inverse frequency of the word across all documents in the dataset. The resulting matrix represents each movie as a set of weighted features that capture its most important words. The system then computes the cosine similarity between the user input and the plot summaries of all the movies in the dataset, and returns the top 3 movies that are most similar to the user input based on this similarity measure.  
